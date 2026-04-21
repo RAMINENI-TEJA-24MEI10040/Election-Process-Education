@@ -71,6 +71,25 @@ Elections in India are massive and complex. Many citizens, particularly first-ti
    npm run dev
    ```
 
+## Docker & Google Cloud Deployment
+
+This project includes a multi-stage `Dockerfile` configured to build and serve both the frontend and backend as a single service, making it perfect for Google Cloud Run.
+
+### Building Locally with Docker
+```bash
+docker build -t election-assistant .
+docker run -p 3001:3001 \
+  -e GEMINI_API_KEY="your-key" \
+  election-assistant
+```
+
+### Deploying to Google Cloud Run
+1. Connect your GitHub repository to Google Cloud Run.
+2. Select **"Build and Deploy from a repository"**.
+3. Choose the `Dockerfile` located at the root of the repository.
+4. Under the "Advanced Settings", pass the necessary environment variables (`GEMINI_API_KEY`, etc.) in the **Variables** tab.
+5. Deploy!
+
 ## Example User Flows
 
 1. **First-Time Voter:**
